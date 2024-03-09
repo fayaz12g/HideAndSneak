@@ -86,7 +86,8 @@ def create_animation(color, player):
             gif_frames = []  # Clear gif_frames for each head pose
 
             for i, run_frame in enumerate(run_frames):
-                print(f"\nCreating frame {i+1}/{len(run_frames)} for head pose: {head_pose_file}")
+                head_pose_name = head_pose_file.replace(".png", "")
+                print(f"\nCreating frame {i+1}/{len(run_frames)} for player {player}'s run animation of {color} for {head_pose_name}")
                 run_image = Image.open(run_frame).copy()  # Make a copy of run_image for each frame
                 body_image_loaded = Image.open(body_image)
                 
@@ -122,6 +123,7 @@ def create_animation(color, player):
 def save_frames_as_gif(frames, output_path):
     # Set disposal to 2 to clear the previous frame
     # Set loop to 0 to loop forever
+    print("\nSaving GIF, this may take a few seconds!")
     kwargs = {'duration': 0.1, 'disposal': 2, 'loop': 0}
     imageio.mimsave(output_path, frames, **kwargs)
 
