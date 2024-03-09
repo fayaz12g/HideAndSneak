@@ -8,6 +8,8 @@ import getpass
 import shutil
 import sys
 from threading import Thread
+import concurrent.futures
+import time
 
 os.environ['IMAGEIO_MAX_IMAGE_PIXELS'] = '512000000'  # Increase to 512MB
 
@@ -82,23 +84,35 @@ player_colors = {
 
 player_types = ["sneaker"]
 player_directions = ["left", "right"]
+debug_options = ["y", "n"]
 
 # Initialize selected vars to be updated upon user input
 selected_types = None
 selected_nums = None
 selected_colors = None
 selected_dirs = None
+selected_debug = "y"
 
-def create_players(type):
-    for player_num in selected_nums: # for each player number colors
-        create_animations(player_num, type)
+def create_players(type, selected_debug):
+    timestart = time.time()
+    with concurrent.futures.ThreadPoolExecutor(max_workers=96) as executor:
+        futures = []
+        for player_num in selected_nums:
+            future = executor.submit(create_animations, player_num, type, selected_debug)
+            futures.append(future)
 
-def create_animations(player, type):
+        # Wait for all threads to finish
+        concurrent.futures.wait(futures)
+
+    timeend = time.time()
+    timetotal = timeend - timestart
+    print(f"Total execution time: {timetotal:.2f} seconds")
+
+def create_animations(player, type, selected_debug):
     for color in selected_colors: # for each skin color
-        animation_thread = Thread(target=create_animation, args=(color, player, type))
-        animation_thread.start()
+        create_animation(color, player, type, selected_debug)
 
-def create_animation(color, player, type):
+def create_animation(color, player, type, selected_debug):
     run_frames = [os.path.join(run_folder, f) for f in os.listdir(run_folder) if f.endswith('.png')]
     run_frames.sort()  # Ensure frames are in order
 
@@ -112,7 +126,8 @@ def create_animation(color, player, type):
         subfolder_path = os.path.join(folder_path, subfolder)
         os.makedirs(subfolder_path, exist_ok=True)
 
-        print(f"Processing folder: {color}/{subfolder}:\n")
+        if selected_debug == "y":
+            print(f"Processing folder: {color}/{subfolder}:\n")
 
         for head_pose_file in os.listdir(head_folder):
             if not head_pose_file.endswith('.png'):
@@ -125,8 +140,8 @@ def create_animation(color, player, type):
             if subfolder == "right":
                 # Flip head image horizontally for "right" folder
                 head_image = head_image.transpose(Image.FLIP_LEFT_RIGHT)
-
-            print(f"Generating animation for {color} {player}'s {subfolder} {head_pose_name}...")
+            
+            print(f"Generating animation for {color} {player}'s {subfolder} {head_pose_name}")
 
             gif_frames = []  # Initialize gif_frames for each head pose
             frame_workers = [] # Initialize array to store worker threads
@@ -134,18 +149,21 @@ def create_animation(color, player, type):
             for i, run_frame in enumerate(run_frames):
                 head_pose_name = head_pose_file.replace(".png", "")
                 
-                frame_thread = Thread(target = create_anim_frame, args = (player, color, type, subfolder, run_frame, i, len(run_frames), head_image, head_pose_name, gif_frames))
+                frame_thread = Thread(target = create_anim_frame, args = (player, color, type, subfolder, run_frame, i, len(run_frames), head_image, head_pose_name, gif_frames, selected_debug))
                 frame_workers.append(frame_thread)
                 frame_thread.start()
             
             for thread in frame_workers: # wait for all threads to complete
                 thread.join()
 
+            if selected_debug == "n":
+                print("\n")
+
             output_file = os.path.join(subfolder_path, f"{color}_{subfolder}_{head_pose_name}_run_anim.gif").lower()
             gif_thread = Thread(target = save_frames_as_gif, args = (gif_frames, output_file))
             gif_thread.start()
 
-def create_anim_frame(player, color, type, subfolder, run_frame, frame_num, num_frames, head_image, head_pose_name, gif_frames):
+def create_anim_frame(player, color, type, subfolder, run_frame, frame_num, num_frames, head_image, head_pose_name, gif_frames, selected_debug):
     output_string = f"\nCreated {subfolder} frame {frame_num+1}/{num_frames} of {color} {player}'s run animation for {head_pose_name}\n"
     run_image = Image.open(run_frame).copy()  # Make a copy of run_image for each frame
     body_image_loaded = Image.open(getattr(sys.modules[__name__], f"{type}_body_image"))
@@ -182,13 +200,15 @@ def create_anim_frame(player, color, type, subfolder, run_frame, frame_num, num_
         output_string += f"\n    Replaced {base_colors.get(cloth)} with {player_colors.get(player).get(cloth)}"
         combined_frame = replace_color(combined_frame, base_colors.get(cloth), player_colors.get(player).get(cloth))
 
-    print(output_string)
+    if selected_debug == "y":
+        print(output_string)
     gif_frames.append(combined_frame)
 
 def save_frames_as_gif(frames, output_path):
     # Set disposal to 2 to clear the previous frame
     # Set loop to 0 to loop forever
-    print(f"\nSaving GIF: {output_path}\n")
+    if selected_debug == "y":
+        print(f"\nSaving GIF: {output_path}\n")
     kwargs = {'duration': 0.1, 'disposal': 2, 'loop': 0}
     imageio.mimsave(output_path, frames, **kwargs)
 
@@ -246,6 +266,9 @@ selected_types = input_parameter("type", "sneaker", selected_types, player_types
 selected_nums = input_parameter("number", "player_one", selected_nums, list(player_colors.keys()))
 selected_colors = input_parameter("color", "tan", selected_colors, list(skin_colors.keys()))
 selected_dirs = input_parameter("direction", "left", selected_dirs, player_directions)
+selected_debug = input("Show Debug: (y/n): ")
+if selected_debug == "\n":
+    selected_debug == "n"
 
 for type in player_types:
-    create_players(type)
+    create_players(type, selected_debug)
