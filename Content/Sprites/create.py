@@ -95,7 +95,8 @@ def create_players(type):
 
 def create_animations(player, type):
     for color in selected_colors: # for each skin color
-        create_animation(color, player, type)
+        animation_thread = Thread(target=create_animation, args=(color, player, type))
+        animation_thread.start()
 
 def create_animation(color, player, type):
     run_frames = [os.path.join(run_folder, f) for f in os.listdir(run_folder) if f.endswith('.png')]
