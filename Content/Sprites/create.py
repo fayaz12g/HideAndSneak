@@ -1,4 +1,5 @@
 import os
+import time
 from PIL import Image
 from PIL import ImageSequence
 import numpy as np
@@ -6,6 +7,7 @@ import imageio
 import getpass
 import shutil
 import sys
+from threading import Thread
 
 os.environ['IMAGEIO_MAX_IMAGE_PIXELS'] = '512000000'  # Increase to 512MB
 
@@ -78,14 +80,21 @@ player_colors = {
     }
 }
 
-player_numbers = ["one", "two", "three", "four", "five", "six"]
+player_types = ["sneaker"]
+player_directions = ["left", "right"]
+
+# Initialize selected vars to be updated upon user input
+selected_types = None
+selected_nums = None
+selected_colors = None
+selected_dirs = None
 
 def create_players(type):
-    for player in player_numbers:
-        create_animations(player, type)
+    for player_num in selected_nums: # for each player number colors
+        create_animations(player_num, type)
 
 def create_animations(player, type):
-    for color in skin_colors:
+    for color in selected_colors: # for each skin color
         create_animation(color, player, type)
 
 def create_animation(color, player, type):
@@ -93,8 +102,8 @@ def create_animation(color, player, type):
     run_frames.sort()  # Ensure frames are in order
 
     # Define folder structure
-    subfolders = ["left", "right"]
-    player_folder = os.path.join(output_folder, f"{type}_anim_gifs", f"player_{player}")
+    subfolders = selected_dirs
+    player_folder = os.path.join(output_folder, f"{type}_anim_gifs", player)
     folder_path = os.path.join(player_folder, color)
     os.makedirs(folder_path, exist_ok=True)
 
@@ -102,7 +111,7 @@ def create_animation(color, player, type):
         subfolder_path = os.path.join(folder_path, subfolder)
         os.makedirs(subfolder_path, exist_ok=True)
 
-        print(f"Processing folder: {color}/{subfolder}")
+        print(f"Processing folder: {color}/{subfolder}:\n")
 
         for head_pose_file in os.listdir(head_folder):
             if not head_pose_file.endswith('.png'):
@@ -116,57 +125,69 @@ def create_animation(color, player, type):
                 # Flip head image horizontally for "right" folder
                 head_image = head_image.transpose(Image.FLIP_LEFT_RIGHT)
 
-            gif_frames = []  # Clear gif_frames for each head pose
+            print(f"Generating animation for {color} {player}'s {subfolder} {head_pose_name}...")
+
+            gif_frames = []  # Initialize gif_frames for each head pose
+            frame_workers = [] # Initialize array to store worker threads
 
             for i, run_frame in enumerate(run_frames):
                 head_pose_name = head_pose_file.replace(".png", "")
-                print(f"\nCreating frame {i+1}/{len(run_frames)} for {color} player {player}'s run animation for {head_pose_name}")
-                run_image = Image.open(run_frame).copy()  # Make a copy of run_image for each frame
-                body_image_loaded = Image.open(getattr(sys.modules[__name__], f"{type}_body_image"))
-
-                if subfolder == "right":
-                    # Flip run image horizontally for "right" folder
-                    body_image_loaded = body_image_loaded.transpose(Image.FLIP_LEFT_RIGHT)
-
                 
-                if subfolder == "right":
-                    # Flip run image horizontally for "right" folder
-                    run_image = run_image.transpose(Image.FLIP_LEFT_RIGHT)
-
-                print(f"    Adding body image")
-                combined_frame = body_image_loaded.copy()
-                
-                print(f"    Adding run image at position (0, 20)")
-                combined_frame.paste(run_image, (0, -20, run_image.width, run_image.height - 20))
-                
-                transpose = 0
-                if (i % 3 != 0): transpose = 20 # every third frame
-
-                print(f"    Adding head image at position (0, {transpose})\n")
-                if subfolder == "left":
-                    combined_frame.paste(head_image, (0, transpose), head_image)
-                else:
-                    # Adjust position for flipped head image
-                    combined_frame.paste(head_image, (combined_frame.width - head_image.width, transpose), head_image)
-
-                for skin in skin_colors.get(color):
-                    print("    Replacing " + base_colors.get(skin) + " to " + skin_colors.get(color).get(skin))
-                    combined_frame = replace_color(combined_frame, base_colors.get(skin), skin_colors.get(color).get(skin))
-
-                for cloth in player_colors.get(f"player_{player}"):
-                    print("    Replacing " + base_colors.get(cloth) + " to " + player_colors.get(f"player_{player}").get(cloth))
-                    combined_frame = replace_color(combined_frame, base_colors.get(cloth), player_colors.get(f"player_{player}").get(cloth))
-                
-                gif_frames.append(combined_frame)
+                frame_thread = Thread(target = create_anim_frame, args = (player, color, type, subfolder, run_frame, i, len(run_frames), head_image, head_pose_name, gif_frames))
+                frame_workers.append(frame_thread)
+                frame_thread.start()
+            
+            for thread in frame_workers: # wait for all threads to complete
+                thread.join()
 
             output_file = os.path.join(subfolder_path, f"{color}_{subfolder}_{head_pose_name}_run_anim.gif").lower()
-            save_frames_as_gif(gif_frames, output_file)
-            print(f"\nGenerated GIF: {output_file}")
+            gif_thread = Thread(target = save_frames_as_gif, args = (gif_frames, output_file))
+            gif_thread.start()
+
+def create_anim_frame(player, color, type, subfolder, run_frame, frame_num, num_frames, head_image, head_pose_name, gif_frames):
+    output_string = f"\nCreated {subfolder} frame {frame_num+1}/{num_frames} of {color} {player}'s run animation for {head_pose_name}\n"
+    run_image = Image.open(run_frame).copy()  # Make a copy of run_image for each frame
+    body_image_loaded = Image.open(getattr(sys.modules[__name__], f"{type}_body_image"))
+
+    if subfolder == "right":
+        # Flip run image horizontally for "right" folder
+        body_image_loaded = body_image_loaded.transpose(Image.FLIP_LEFT_RIGHT)
+    
+    if subfolder == "right":
+        # Flip run image horizontally for "right" folder
+        run_image = run_image.transpose(Image.FLIP_LEFT_RIGHT)
+
+    output_string += f"    Added body image\n"
+    combined_frame = body_image_loaded.copy()
+    
+    output_string += f"    Added run image at position (0, 20)\n"
+    combined_frame.paste(run_image, (0, -20, run_image.width, run_image.height - 20))
+    
+    transpose = 0
+    if (frame_num % 3 != 0): transpose = 20 # every third frame
+
+    output_string += f"    Added head image at position (0, {transpose})\n"
+    if subfolder == "left":
+        combined_frame.paste(head_image, (0, transpose), head_image)
+    else:
+        # Adjust position for flipped head image
+        combined_frame.paste(head_image, (combined_frame.width - head_image.width, transpose), head_image)
+
+    for skin in skin_colors.get(color):
+        output_string += f"\n    Replaced {base_colors.get(skin)} with {skin_colors.get(color).get(skin)}"
+        combined_frame = replace_color(combined_frame, base_colors.get(skin), skin_colors.get(color).get(skin))
+
+    for cloth in player_colors.get(player):
+        output_string += f"\n    Replaced {base_colors.get(cloth)} with {player_colors.get(player).get(cloth)}"
+        combined_frame = replace_color(combined_frame, base_colors.get(cloth), player_colors.get(player).get(cloth))
+
+    print(output_string)
+    gif_frames.append(combined_frame)
 
 def save_frames_as_gif(frames, output_path):
     # Set disposal to 2 to clear the previous frame
     # Set loop to 0 to loop forever
-    print("\nSaving GIF, this may take a few seconds!")
+    print(f"\nSaving GIF: {output_path}\n")
     kwargs = {'duration': 0.1, 'disposal': 2, 'loop': 0}
     imageio.mimsave(output_path, frames, **kwargs)
 
@@ -192,8 +213,38 @@ def replace_color(image, old_color, new_color):
     
     return Image.fromarray(data, mode=image.mode)  # Ensure the returned image has the same mode
 
+def input_parameter(param, example, selected_list, all):
+    while(selected_list == None):
+        # Input user's list of param elements for current param
+        input_list = input(f"Player {param.capitalize()}s (e.g. {example.lower()}): ").strip().split(" ")
+
+        # default to all if nothing was inputted
+        if (input_list[0] == "" and len(input_list) == 1):
+            return all
+
+        # Iterate through each param element to ensure it is valid for that param
+        found_error = False
+        for input_element in input_list:
+            if input_element not in all:
+                print(f"  Error: {input_element} is not a valid player {param.lower()}. Try again.")
+                found_error = True
+                break
+        if (not found_error): return input_list
+
 # START
-if (len(sys.argv) > 1):
-    create_players(type=f"{sys.argv[1]}")
-else:
-    create_players(type="sneaker")
+print("-----------------------------------------------------------------------------------")
+print("|                        HIDE AND SNEAK: ANIMATION CREATOR                        |")
+print("|                                                                                 |")
+print("| For each of the following, enter a space-separated list of options to generate. |")
+print("|                    e.g. 'player_one player_three player_six'                    |")
+print("|                      (Or leave blank to generate all)                           |")
+print("|---------------------------------------------------------------------------------|")
+print()
+
+selected_types = input_parameter("type", "sneaker", selected_types, player_types)
+selected_nums = input_parameter("number", "player_one", selected_nums, list(player_colors.keys()))
+selected_colors = input_parameter("color", "tan", selected_colors, list(skin_colors.keys()))
+selected_dirs = input_parameter("direction", "left", selected_dirs, player_directions)
+
+for type in player_types:
+    create_players(type)
