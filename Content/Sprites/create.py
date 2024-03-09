@@ -128,7 +128,7 @@ def create_animation(color, player):
 
             for i, run_frame in enumerate(run_frames):
                 head_pose_name = head_pose_file.replace(".png", "")
-                print(f"\nCreating frame {i+1}/{len(run_frames)} for player {player}'s run animation of {color} for {head_pose_name}")
+                print(f"\nCreating frame {i+1}/{len(run_frames)} for {color} player {player}'s run animation for {head_pose_name}")
                 run_image = Image.open(run_frame).copy()  # Make a copy of run_image for each frame
                 body_image_loaded = Image.open(body_image)
                 
@@ -160,16 +160,11 @@ def create_animation(color, player):
                     print("    Replacing " + base_colors.get(cloth) + " to " + player_colors.get(f"player_{player}").get(cloth))
                     combined_frame = replace_color(combined_frame, base_colors.get(cloth), player_colors.get(f"player_{player}").get(cloth))
                 
-                
-                # combined_frame = replace_color(combined_frame, player_colors.get("player_one").get("clothdark"), skin_colors.get(color).get("clothdark"))
-                # combined_frame = replace_color(combined_frame, player_colors.get("player_one").get("clothdarkest"), skin_colors.get(color).get("clothdarkest"))
-                # combined_frame = replace_color(combined_frame, player_colors.get("player_one").get("clothlight"), skin_colors.get(color).get("clothlight"))
                 gif_frames.append(combined_frame)
 
             output_file = os.path.join(subfolder_path, f"{color}_{subfolder}_{head_pose_name}_run_anim.gif").lower()
             save_frames_as_gif(gif_frames, output_file)
             print(f"\nGenerated GIF: {output_file}")
-            # create_individual_png_frames(gif_frames, output_folder)
 
 def save_frames_as_gif(frames, output_path):
     # Set disposal to 2 to clear the previous frame
