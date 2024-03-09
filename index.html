@@ -5,30 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hide and Sneak</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background-color: #444444;
+            background-image: radial-gradient(circle, #222222 30%, transparent 1%);
+            background-size: 30px 30px;
         }
         h1 {
             text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 48px;
+            color: white;
+            text-shadow: 2px 2px 2px #000000;
+        }
+        #gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .image {
-            display: inline-block;
+            display: none;
             margin: 10px;
         }
         .image img {
-            width: 128px;
-            height: 128px;
+            width: 512px;
+            height: 512px;
+            align-items: center;
+        }
+        #randomizeButton {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <h1>Hide and Sneak</h1>
     <div id="gallery"></div>
+    <button id="randomizeButton">Randomize</button>
 
     <script>
         const gallery = document.getElementById('gallery');
+        const randomizeButton = document.getElementById('randomizeButton');
 
         async function fetchImages(directory) {
             const response = await fetch(directory);
@@ -40,7 +60,7 @@
             links.forEach(link => {
                 const filename = link.getAttribute('href');
                 const ext = filename.split('.').pop().toLowerCase();
-                if (ext === 'png' || ext === 'gif') {
+                if (ext === 'gif') {
                     const imageUrl = directory + filename;
                     const imgElement = document.createElement('div');
                     imgElement.className = 'image';
@@ -48,6 +68,8 @@
                     gallery.appendChild(imgElement);
                 }
             });
+
+            randomizeImage(); // Randomize image after all images have been loaded
         }
 
         async function getAllFiles(directory) {
@@ -71,7 +93,22 @@
             fetchImages(directory);
         }
 
+        function randomizeImage() {
+            const images = document.querySelectorAll('.image');
+            const randomIndex = Math.floor(Math.random() * images.length);
+            images.forEach((image, index) => {
+                if (index === randomIndex) {
+                    image.style.display = 'inline-block';
+                } else {
+                    image.style.display = 'none';
+                }
+            });
+        }
+
         getAllFiles('Content/Sprites/');
+
+        randomizeButton.addEventListener('click', randomizeImage);
+
     </script>
 </body>
 </html>
