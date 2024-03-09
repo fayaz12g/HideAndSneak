@@ -116,7 +116,7 @@ def create_animation(color, player):
 
             output_file = os.path.join(subfolder_path, f"{color}_{subfolder}_{head_pose_name}_run_anim.gif").lower()
             save_frames_as_gif(gif_frames, output_file)
-            print(f"Generated GIF: {output_file}")
+            print(f"\nGenerated GIF: {output_file}")
             # create_individual_png_frames(gif_frames, output_folder)
 
 def save_frames_as_gif(frames, output_path):
