@@ -3,41 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIF Viewer</title>
+    <title>Hide and Sneak</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .image {
+            display: inline-block;
+            margin: 10px;
+        }
+        .image img {
+            width: 128px;
+            height: 128px;
+        }
+    </style>
 </head>
 <body>
-    <div id="gif-container"></div>
+    <h1>Hide and Sneak</h1>
+    <div id="gallery"></div>
 
     <script>
-        function displayGifs() {
-            const container = document.getElementById('gif-container');
+        const gallery = document.getElementById('gallery');
 
-            function searchGifs(directory) {
-                fetch('https://github.com/fayaz12g/HideAndSneak/tree/main/' + directory)
-                    .then(response => response.text())
-                    .then(data => {
-                        const parser = new DOMParser();
-                        const htmlDoc = parser.parseFromString(data, 'text/html');
-                        const links = htmlDoc.querySelectorAll('.js-navigation-open');
+        async function fetchImages(directory) {
+            const response = await fetch(directory);
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const links = doc.querySelectorAll('a');
 
-                        links.forEach(link => {
-                            const href = link.getAttribute('title');
-                            if (href.endsWith('.gif')) {
-                                const img = document.createElement('img');
-                                img.src = 'https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/' + directory + href;
-                                container.appendChild(img);
-                            } else if (link.classList.contains('octicon-file-directory')) {
-                                searchGifs(directory + href);
-                            }
-                        });
-                    })
-                    .catch(error => console.error('Error fetching directory:', error));
-            }
-
-            searchGifs('Content/Sprites/');
+            links.forEach(link => {
+                const filename = link.getAttribute('href');
+                const ext = filename.split('.').pop().toLowerCase();
+                if (ext === 'png' || ext === 'gif') {
+                    const imageUrl = directory + filename;
+                    const imgElement = document.createElement('div');
+                    imgElement.className = 'image';
+                    imgElement.innerHTML = `<img src="${imageUrl}" alt="${filename}">`;
+                    gallery.appendChild(imgElement);
+                }
+            });
         }
 
-        displayGifs();
+        async function getAllFiles(directory) {
+            console.log('Fetching files from:', directory);
+            const response = await fetch(directory);
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const links = doc.querySelectorAll('a');
+
+            links.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href.endsWith('/')) {
+                    console.log('Found directory:', href);
+                    getAllFiles(directory + href);
+                } else {
+                    console.log('Found file:', href);
+                }
+            });
+
+            fetchImages(directory);
+        }
+
+        getAllFiles('Content/Sprites/');
     </script>
 </body>
 </html>
