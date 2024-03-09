@@ -50,7 +50,8 @@
         const gallery = document.getElementById('gallery');
         const randomizeButton = document.getElementById('randomizeButton');
 
-        async function fetchImages(directory) {
+        async function fetchImages() {
+            const directory = 'https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/';
             const response = await fetch(directory);
             const html = await response.text();
             const parser = new DOMParser();
@@ -72,27 +73,6 @@
             randomizeImage(); // Randomize image after all images have been loaded
         }
 
-        async function getAllFiles(directory) {
-            console.log('Fetching files from:', directory);
-            const response = await fetch(directory);
-            const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const links = doc.querySelectorAll('a');
-
-            links.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href.endsWith('/')) {
-                    console.log('Found directory:', href);
-                    getAllFiles(directory + href);
-                } else {
-                    console.log('Found file:', href);
-                }
-            });
-
-            fetchImages(directory);
-        }
-
         function randomizeImage() {
             const images = document.querySelectorAll('.image');
             const randomIndex = Math.floor(Math.random() * images.length);
@@ -105,7 +85,7 @@
             });
         }
 
-        getAllFiles('Content/Sprites/');
+        fetchImages();
 
         randomizeButton.addEventListener('click', randomizeImage);
 
