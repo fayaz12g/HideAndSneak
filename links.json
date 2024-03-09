@@ -54,3 +54,283 @@
     }
   }
 }
+{
+  "light": {
+    "left": {
+      "light_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/left/light_left_head_down_blink_run_anim.gif",
+      "light_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/left/light_left_head_down_run_anim.gif",
+      "light_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/left/light_left_head_idle_run_anim.gif",
+      "light_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/left/light_left_head_idle_blink_run_anim.gif",
+      "light_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/left/light_left_head_up_run_anim.gif",
+      "light_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/left/light_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "light_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/right/light_right_head_down_blink_run_anim.gif",
+      "light_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/right/light_right_head_down_run_anim.gif",
+      "light_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/right/light_right_head_idle_run_anim.gif",
+      "light_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/right/light_right_head_idle_blink_run_anim.gif",
+      "light_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/right/light_right_head_up_run_anim.gif",
+      "light_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/light/right/light_right_head_up_blink_run_anim.gif"
+    }
+  },
+  "dark": {
+    "left": {
+      "dark_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/left/dark_left_head_down_blink_run_anim.gif",
+      "dark_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/left/dark_left_head_down_run_anim.gif",
+      "dark_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/left/dark_left_head_idle_run_anim.gif",
+      "dark_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/left/dark_left_head_idle_blink_run_anim.gif",
+      "dark_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/left/dark_left_head_up_run_anim.gif",
+      "dark_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/left/dark_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "dark_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/right/dark_right_head_down_blink_run_anim.gif",
+      "dark_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/right/dark_right_head_down_run_anim.gif",
+      "dark_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/right/dark_right_head_idle_run_anim.gif",
+      "dark_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/right/dark_right_head_idle_blink_run_anim.gif",
+      "dark_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/right/dark_right_head_up_run_anim.gif",
+      "dark_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/dark/right/dark_right_head_up_blink_run_anim.gif"
+    }
+  },
+  "darkest": {
+    "left": {
+      "darkest_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/left/darkest_left_head_down_blink_run_anim.gif",
+      "darkest_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/left/darkest_left_head_down_run_anim.gif",
+      "darkest_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/left/darkest_left_head_idle_run_anim.gif",
+      "darkest_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/left/darkest_left_head_idle_blink_run_anim.gif",
+      "darkest_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/left/darkest_left_head_up_run_anim.gif",
+      "darkest_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/left/darkest_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "darkest_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/right/darkest_right_head_down_blink_run_anim.gif",
+      "darkest_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/right/darkest_right_head_down_run_anim.gif",
+      "darkest_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/right/darkest_right_head_idle_run_anim.gif",
+      "darkest_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/right/darkest_right_head_idle_blink_run_anim.gif",
+      "darkest_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/right/darkest_right_head_up_run_anim.gif",
+      "darkest_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_two/darkest/right/darkest_right_head_up_blink_run_anim.gif"
+    }
+  }
+}
+{
+  "light": {
+    "left": {
+      "light_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/left/light_left_head_down_blink_run_anim.gif",
+      "light_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/left/light_left_head_down_run_anim.gif",
+      "light_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/left/light_left_head_idle_run_anim.gif",
+      "light_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/left/light_left_head_idle_blink_run_anim.gif",
+      "light_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/left/light_left_head_up_run_anim.gif",
+      "light_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/left/light_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "light_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/right/light_right_head_down_blink_run_anim.gif",
+      "light_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/right/light_right_head_down_run_anim.gif",
+      "light_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/right/light_right_head_idle_run_anim.gif",
+      "light_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/right/light_right_head_idle_blink_run_anim.gif",
+      "light_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/right/light_right_head_up_run_anim.gif",
+      "light_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/light/right/light_right_head_up_blink_run_anim.gif"
+    }
+  },
+  "dark": {
+    "left": {
+      "dark_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/left/dark_left_head_down_blink_run_anim.gif",
+      "dark_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/left/dark_left_head_down_run_anim.gif",
+      "dark_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/left/dark_left_head_idle_run_anim.gif",
+      "dark_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/left/dark_left_head_idle_blink_run_anim.gif",
+      "dark_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/left/dark_left_head_up_run_anim.gif",
+      "dark_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/left/dark_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "dark_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/right/dark_right_head_down_blink_run_anim.gif",
+      "dark_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/right/dark_right_head_down_run_anim.gif",
+      "dark_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/right/dark_right_head_idle_run_anim.gif",
+      "dark_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/right/dark_right_head_idle_blink_run_anim.gif",
+      "dark_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/right/dark_right_head_up_run_anim.gif",
+      "dark_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/dark/right/dark_right_head_up_blink_run_anim.gif"
+    }
+  },
+  "darkest": {
+    "left": {
+      "darkest_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/left/darkest_left_head_down_blink_run_anim.gif",
+      "darkest_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/left/darkest_left_head_down_run_anim.gif",
+      "darkest_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/left/darkest_left_head_idle_run_anim.gif",
+      "darkest_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/left/darkest_left_head_idle_blink_run_anim.gif",
+      "darkest_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/left/darkest_left_head_up_run_anim.gif",
+      "darkest_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/left/darkest_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "darkest_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/right/darkest_right_head_down_blink_run_anim.gif",
+      "darkest_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/right/darkest_right_head_down_run_anim.gif",
+      "darkest_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/right/darkest_right_head_idle_run_anim.gif",
+      "darkest_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/right/darkest_right_head_idle_blink_run_anim.gif",
+      "darkest_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/right/darkest_right_head_up_run_anim.gif",
+      "darkest_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_three/darkest/right/darkest_right_head_up_blink_run_anim.gif"
+    }
+  }
+}
+{
+  "light": {
+    "left": {
+      "light_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/left/light_left_head_down_blink_run_anim.gif",
+      "light_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/left/light_left_head_down_run_anim.gif",
+      "light_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/left/light_left_head_idle_run_anim.gif",
+      "light_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/left/light_left_head_idle_blink_run_anim.gif",
+      "light_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/left/light_left_head_up_run_anim.gif",
+      "light_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/left/light_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "light_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/right/light_right_head_down_blink_run_anim.gif",
+      "light_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/right/light_right_head_down_run_anim.gif",
+      "light_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/right/light_right_head_idle_run_anim.gif",
+      "light_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/right/light_right_head_idle_blink_run_anim.gif",
+      "light_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/right/light_right_head_up_run_anim.gif",
+      "light_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/light/right/light_right_head_up_blink_run_anim.gif"
+    }
+  },
+  "dark": {
+    "left": {
+      "dark_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/left/dark_left_head_down_blink_run_anim.gif",
+      "dark_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/left/dark_left_head_down_run_anim.gif",
+      "dark_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/left/dark_left_head_idle_run_anim.gif",
+      "dark_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/left/dark_left_head_idle_blink_run_anim.gif",
+      "dark_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/left/dark_left_head_up_run_anim.gif",
+      "dark_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/left/dark_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "dark_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/right/dark_right_head_down_blink_run_anim.gif",
+      "dark_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/right/dark_right_head_down_run_anim.gif",
+      "dark_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/right/dark_right_head_idle_run_anim.gif",
+      "dark_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/right/dark_right_head_idle_blink_run_anim.gif",
+      "dark_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/right/dark_right_head_up_run_anim.gif",
+      "dark_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/dark/right/dark_right_head_up_blink_run_anim.gif"
+    }
+  },
+  "darkest": {
+    "left": {
+      "darkest_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/left/darkest_left_head_down_blink_run_anim.gif",
+      "darkest_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/left/darkest_left_head_down_run_anim.gif",
+      "darkest_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/left/darkest_left_head_idle_run_anim.gif",
+      "darkest_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/left/darkest_left_head_idle_blink_run_anim.gif",
+      "darkest_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/left/darkest_left_head_up_run_anim.gif",
+      "darkest_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/left/darkest_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "darkest_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/right/darkest_right_head_down_blink_run_anim.gif",
+      "darkest_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/right/darkest_right_head_down_run_anim.gif",
+      "darkest_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/right/darkest_right_head_idle_run_anim.gif",
+      "darkest_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/right/darkest_right_head_idle_blink_run_anim.gif",
+      "darkest_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/right/darkest_right_head_up_run_anim.gif",
+      "darkest_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_four/darkest/right/darkest_right_head_up_blink_run_anim.gif"
+    }
+  }
+}
+{
+  "light": {
+    "left": {
+      "light_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/left/light_left_head_down_blink_run_anim.gif",
+      "light_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/left/light_left_head_down_run_anim.gif",
+      "light_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/left/light_left_head_idle_run_anim.gif",
+      "light_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/left/light_left_head_idle_blink_run_anim.gif",
+      "light_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/left/light_left_head_up_run_anim.gif",
+      "light_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/left/light_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "light_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/right/light_right_head_down_blink_run_anim.gif",
+      "light_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/right/light_right_head_down_run_anim.gif",
+      "light_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/right/light_right_head_idle_run_anim.gif",
+      "light_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/right/light_right_head_idle_blink_run_anim.gif",
+      "light_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/right/light_right_head_up_run_anim.gif",
+      "light_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/light/right/light_right_head_up_blink_run_anim.gif"
+    }
+  },
+  "dark": {
+    "left": {
+      "dark_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/left/dark_left_head_down_blink_run_anim.gif",
+      "dark_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/left/dark_left_head_down_run_anim.gif",
+      "dark_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/left/dark_left_head_idle_run_anim.gif",
+      "dark_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/left/dark_left_head_idle_blink_run_anim.gif",
+      "dark_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/left/dark_left_head_up_run_anim.gif",
+      "dark_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/left/dark_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "dark_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/right/dark_right_head_down_blink_run_anim.gif",
+      "dark_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/right/dark_right_head_down_run_anim.gif",
+      "dark_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/right/dark_right_head_idle_run_anim.gif",
+      "dark_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/right/dark_right_head_idle_blink_run_anim.gif",
+      "dark_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/right/dark_right_head_up_run_anim.gif",
+      "dark_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/dark/right/dark_right_head_up_blink_run_anim.gif"
+    }
+  },
+  "darkest": {
+    "left": {
+      "darkest_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/left/darkest_left_head_down_blink_run_anim.gif",
+      "darkest_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/left/darkest_left_head_down_run_anim.gif",
+      "darkest_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/left/darkest_left_head_idle_run_anim.gif",
+      "darkest_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/left/darkest_left_head_idle_blink_run_anim.gif",
+      "darkest_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/left/darkest_left_head_up_run_anim.gif",
+      "darkest_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/left/darkest_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "darkest_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/right/darkest_right_head_down_blink_run_anim.gif",
+      "darkest_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/right/darkest_right_head_down_run_anim.gif",
+      "darkest_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/right/darkest_right_head_idle_run_anim.gif",
+      "darkest_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/right/darkest_right_head_idle_blink_run_anim.gif",
+      "darkest_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/right/darkest_right_head_up_run_anim.gif",
+      "darkest_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_five/darkest/right/darkest_right_head_up_blink_run_anim.gif"
+    }
+  }
+}
+{
+  "light": {
+    "left": {
+      "light_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/left/light_left_head_down_blink_run_anim.gif",
+      "light_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/left/light_left_head_down_run_anim.gif",
+      "light_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/left/light_left_head_idle_run_anim.gif",
+      "light_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/left/light_left_head_idle_blink_run_anim.gif",
+      "light_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/left/light_left_head_up_run_anim.gif",
+      "light_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/left/light_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "light_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/right/light_right_head_down_blink_run_anim.gif",
+      "light_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/right/light_right_head_down_run_anim.gif",
+      "light_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/right/light_right_head_idle_run_anim.gif",
+      "light_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/right/light_right_head_idle_blink_run_anim.gif",
+      "light_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/right/light_right_head_up_run_anim.gif",
+      "light_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/light/right/light_right_head_up_blink_run_anim.gif"
+    }
+  },
+  "dark": {
+    "left": {
+      "dark_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/left/dark_left_head_down_blink_run_anim.gif",
+      "dark_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/left/dark_left_head_down_run_anim.gif",
+      "dark_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/left/dark_left_head_idle_run_anim.gif",
+      "dark_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/left/dark_left_head_idle_blink_run_anim.gif",
+      "dark_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/left/dark_left_head_up_run_anim.gif",
+      "dark_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/left/dark_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "dark_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/right/dark_right_head_down_blink_run_anim.gif",
+      "dark_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/right/dark_right_head_down_run_anim.gif",
+      "dark_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/right/dark_right_head_idle_run_anim.gif",
+      "dark_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/right/dark_right_head_idle_blink_run_anim.gif",
+      "dark_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/right/dark_right_head_up_run_anim.gif",
+      "dark_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/dark/right/dark_right_head_up_blink_run_anim.gif"
+    }
+  },
+  "darkest": {
+    "left": {
+      "darkest_left_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/left/darkest_left_head_down_blink_run_anim.gif",
+      "darkest_left_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/left/darkest_left_head_down_run_anim.gif",
+      "darkest_left_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/left/darkest_left_head_idle_run_anim.gif",
+      "darkest_left_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/left/darkest_left_head_idle_blink_run_anim.gif",
+      "darkest_left_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/left/darkest_left_head_up_run_anim.gif",
+      "darkest_left_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/left/darkest_left_head_up_blink_run_anim.gif"
+    },
+    "right": {
+      "darkest_right_head_down_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/right/darkest_right_head_down_blink_run_anim.gif",
+      "darkest_right_head_down_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/right/darkest_right_head_down_run_anim.gif",
+      "darkest_right_head_idle_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/right/darkest_right_head_idle_run_anim.gif",
+      "darkest_right_head_idle_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/right/darkest_right_head_idle_blink_run_anim.gif",
+      "darkest_right_head_up_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/right/darkest_right_head_up_run_anim.gif",
+      "darkest_right_head_up_blink_run_anim.gif": "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/sneaker_anim_gifs/player_six/darkest/right/darkest_right_head_up_blink_run_anim.gif"
+    }
+  }
+}
