@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF Viewer</title>
+</head>
+<body>
+    <div id="gif-container"></div>
+
+    <script>
+        function displayGifs() {
+            const container = document.getElementById('gif-container');
+
+            function searchGifs(directory) {
+                fetch(directory)
+                    .then(response => response.text())
+                    .then(data => {
+                        const parser = new DOMParser();
+                        const xml = parser.parseFromString(data, 'text/xml');
+                        const links = xml.querySelectorAll('a');
+
+                        links.forEach(link => {
+                            const href = link.getAttribute('href');
+                            if (href.endsWith('.gif')) {
+                                const img = document.createElement('img');
+                                img.src = href;
+                                container.appendChild(img);
+                            } else if (href.endsWith('/')) {
+                                searchGifs(directory + href);
+                            }
+                        });
+                    })
+                    .catch(error => console.error('Error fetching directory:', error));
+            }
+
+            searchGifs('/Content/Sprites/');
+        }
+
+        displayGifs();
+    </script>
+</body>
+</html>
