@@ -19,6 +19,14 @@ body_image = os.path.join(output_folder, "body.png")
 
 anim_gifs_folder = os.path.join(output_folder, "anim_gifs")
 
+base_colors = {
+    "skin1": "#fec087",
+    "skin2": "#e15351",
+    "clothdarkest": "#111111",
+    "clothdark":  "#252a3d",
+    "clothlight": "#637e93",
+}
+
 # Define skin color replacements
 skin_colors = {
     "tan": {
@@ -36,6 +44,39 @@ skin_colors = {
     "darkest": {
         "skin1": "#da7338",
         "skin2": "#b24900"
+    }
+}
+
+player_colors = {
+    "player_one": {
+        "clothdarkest": "#111111",
+        "clothdark":  "#252a3d",
+        "clothlight": "#637e93",
+    },
+    "player_two": {
+        "clothdarkest": "#88001b",
+        "clothdark": "#ec1c24",
+        "clothlight": "#f05c62"
+    },
+    "player_three": {
+        "clothdarkest": "#0b852d",
+        "clothdark": "#0ed145",
+        "clothlight": "#c4ff0e"
+    },
+    "player_four": {
+        "clothdarkest": "#3f48cc",
+        "clothdark": "#00a8f3",
+        "clothlight": "#8cfffb"
+    },
+    "player_five": {
+        "clothdarkest": "#f68821",
+        "clothdark": "#ffca18",
+        "clothlight": "#fff200"
+    },
+    "player_six": {
+        "clothdarkest": "#4a0f4b",
+        "clothdark": "#b83dba",
+        "clothlight": "#ffaec8"
     }
 }
 
@@ -104,15 +145,25 @@ def create_animation(color, player):
                 transpose = 0
                 if (i % 3 != 0): transpose = 20 # every third frame
 
-                print(f"    Adding head image at position (0, {transpose})")
+                print(f"    Adding head image at position (0, {transpose})\n")
                 if subfolder == "left":
                     combined_frame.paste(head_image, (0, transpose), head_image)
                 else:
                     # Adjust position for flipped head image
                     combined_frame.paste(head_image, (combined_frame.width - head_image.width, transpose), head_image)
+
+                for skin in skin_colors.get(color):
+                    print("    Replacing " + base_colors.get(skin) + " to " + skin_colors.get(color).get(skin))
+                    combined_frame = replace_color(combined_frame, base_colors.get(skin), skin_colors.get(color).get(skin))
+
+                for cloth in player_colors.get(f"player_{player}"):
+                    print("    Replacing " + base_colors.get(cloth) + " to " + player_colors.get(f"player_{player}").get(cloth))
+                    combined_frame = replace_color(combined_frame, base_colors.get(cloth), player_colors.get(f"player_{player}").get(cloth))
                 
-                combined_frame = replace_color(combined_frame, skin_colors.get("tan").get("skin1"), skin_colors.get(color).get("skin1"))
-                combined_frame = replace_color(combined_frame, skin_colors.get("tan").get("skin2"), skin_colors.get(color).get("skin2"))
+                
+                # combined_frame = replace_color(combined_frame, player_colors.get("player_one").get("clothdark"), skin_colors.get(color).get("clothdark"))
+                # combined_frame = replace_color(combined_frame, player_colors.get("player_one").get("clothdarkest"), skin_colors.get(color).get("clothdarkest"))
+                # combined_frame = replace_color(combined_frame, player_colors.get("player_one").get("clothlight"), skin_colors.get(color).get("clothlight"))
                 gif_frames.append(combined_frame)
 
             output_file = os.path.join(subfolder_path, f"{color}_{subfolder}_{head_pose_name}_run_anim.gif").lower()
@@ -132,41 +183,6 @@ def create_individual_png_frames(frames, output_folder):
         output_file = os.path.join(output_folder, f"frame_{i}.png")
         frame.save(output_file, format="PNG")
 
-def copy_and_replace():
-    for folder_name, colors in skin_colors.items():
-        print(f"Processing folder: {folder_name}")
-        source_folder = os.path.join(player1_folder, "tan")
-        target_folder = os.path.join(player1_folder, folder_name)
-
-        os.makedirs(target_folder, exist_ok=True)
-
-        for subfolder in os.listdir(source_folder):
-            subfolder_path = os.path.join(source_folder, subfolder)
-            if not os.path.isdir(subfolder_path):
-                continue
-
-            for filename in os.listdir(subfolder_path):
-                source_file = os.path.join(subfolder_path, filename)
-                target_filename = filename.replace("tan", folder_name, 1)
-                target_file = os.path.join(target_folder, target_filename)  # Remove subfolder from target path
-                print(f"Processing file: {target_filename}")
-                
-
-                if filename.endswith('.gif'):
-                    print("Processing GIF file")
-                    new_gif = []
-                    with imageio.get_reader(source_file) as reader:
-                        for i, frame in enumerate(reader):
-                            print(f"Processing frame {i+1}")
-                            frame = Image.fromarray(frame).convert("RGBA")  # Convert frame to RGBA
-                            frame = replace_color(frame, "#fec087", colors["skin1"])
-                            frame = replace_color(frame, "#e15351", colors["skin2"])
-                            new_gif.append(frame)
-                    print("Saving GIF file")
-                    save_frames_as_gif(new_gif, target_file)
-                    # new_gif[0].save(target_file, save_all=True, append_images=new_gif[1:], loop=0, disposal=2, transparency=0)
-
-
 def hex_to_rgb(hex_color):
     hex_color = hex_color.lstrip('#')
     return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
@@ -184,57 +200,8 @@ def replace_color(image, old_color, new_color):
     
     return Image.fromarray(data, mode=image.mode)  # Ensure the returned image has the same mode
 
-def create_player_folders(head_folder, output_folder):
-    # Define player colors
-    player_colors = {
-        "player_one": {
-        "clothdarkest": "#111111",
-        "clothdark":  "#252a3d",
-        "clothlight": "#637e93",
-        },
-        "player_two": {
-            "clothdarkest": "#88001b",
-            "clothdark": "#ec1c24",
-            "clothlight": "#f05c62"
-        },
-        "player_three": {
-            "clothdarkest": "#0b852d",
-            "clothdark": "#0ed145",
-            "clothlight": "#c4ff0e"
-        },
-        "player_four": {
-            "clothdarkest": "#3f48cc",
-            "clothdark": "#00a8f3",
-            "clothlight": "#8cfffb"
-        },
-        "player_five": {
-            "clothdarkest": "#f68821",
-            "clothdark": "#ffca18",
-            "clothlight": "#fff200"
-        },
-        "player_six": {
-            "clothdarkest": "#4a0f4b",
-            "clothdark": "#b83dba",
-            "clothlight": "#ffaec8"
-        }
-    }
-
-    # Iterate over each player
-    for player, colors in player_colors.items():
-        player_folder = os.path.join(output_folder, player)
-        player_one_folder = os.path.join(output_folder, "player_one")
-
-        # Copy player_one folder to new player folder
-        shutil.copytree(player_one_folder, player_folder)
-
-        # Replace colors for each player
-        copy_and_replace(head_folder, player_folder, colors)
-
 # START
 if (len(sys.argv) > 1 and sys.argv[1] == "copy"):
-    copy_and_replace()
+    print("Deprecated")
 else:
     create_players()
-
-
-# Authored by Copilot AI
