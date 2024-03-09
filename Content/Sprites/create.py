@@ -23,8 +23,8 @@ base_colors = {
     "skin1": "#fec087",
     "skin2": "#e15351",
     "clothdarkest": "#111111",
-    "clothdark":  "#252a3d",
-    "clothlight": "#637e93",
+    "clothdark":  "#b97a56",
+    "clothlight": "#ffaec8",
 }
 
 # Define skin color replacements
