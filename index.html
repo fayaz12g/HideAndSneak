@@ -50,8 +50,10 @@
         const gallery = document.getElementById('gallery');
         const randomizeButton = document.getElementById('randomizeButton');
 
-        async function fetchImagesFromJson(linksJson) {
-            const links = JSON.parse(linksJson);
+        async function fetchImagesFromJson() {
+            const response = await fetch('https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/links.json');
+            const links = await response.json();
+
             const skinColors = ['light', 'dark', 'darkest'];
             const directions = ['left', 'right'];
 
@@ -83,9 +85,7 @@
             });
         }
 
-        fetch('links.json')
-            .then(response => response.text())
-            .then(fetchImagesFromJson);
+        fetchImagesFromJson();
 
         randomizeButton.addEventListener('click', randomizeImage);
 
