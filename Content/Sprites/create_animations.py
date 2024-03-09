@@ -3,6 +3,7 @@ from PIL import Image
 from PIL import ImageSequence
 import numpy as np
 import imageio
+import getpass
 import shutil
 
 os.environ['IMAGEIO_MAX_IMAGE_PIXELS'] = '512000000'  # Increase to 512MB
@@ -164,7 +165,8 @@ def create_individual_png_frames(frames, output_folder):
         frame.save(output_file, format="PNG")
 
 if __name__ == "__main__":
-    input_folder = r"C:\Users\fayaz\Documents\Unreal Projects\HideAndSneak\Content\Sprites"
+    username = getpass.getuser()
+    input_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Content\Sprites"
     head_folder = os.path.join(input_folder, "head_poses")
     run_folder = os.path.join(input_folder, "run_animation")
     output_folder = input_folder
