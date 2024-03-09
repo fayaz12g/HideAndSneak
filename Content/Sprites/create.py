@@ -14,10 +14,8 @@ input_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Content\Spri
 head_folder = os.path.join(input_folder, "head_poses")
 run_folder = os.path.join(input_folder, "run_animation")
 output_folder = input_folder
-body_image = os.path.join(output_folder, "body.png")
-
-
-anim_gifs_folder = os.path.join(output_folder, "anim_gifs")
+sneaker_body_image = os.path.join(output_folder, "sneaker_body.png")
+seeker_body_image = os.path.join(output_folder, "seeker_body.png")
 
 base_colors = {
     "skin1": "#fec087",
@@ -38,11 +36,11 @@ skin_colors = {
         "skin2": "#ffca18"
     },
     "dark": {
-        "skin1": "#b97a56",
+        "skin1": "#b98161",
         "skin2": "#da7338"
     },
     "darkest": {
-        "skin1": "#da7338",
+        "skin1": "#64422e",
         "skin2": "#b24900"
     }
 }
@@ -82,23 +80,21 @@ player_colors = {
 
 player_numbers = ["one", "two", "three", "four", "five", "six"]
 
-def create_players():
+def create_players(type):
     for player in player_numbers:
-        create_animations(player)
+        create_animations(player, type)
 
-def create_animations(player):
+def create_animations(player, type):
     for color in skin_colors:
-        create_animation(color, player)
+        create_animation(color, player, type)
 
-def create_animation(color, player):
+def create_animation(color, player, type):
     run_frames = [os.path.join(run_folder, f) for f in os.listdir(run_folder) if f.endswith('.png')]
     run_frames.sort()  # Ensure frames are in order
 
     # Define folder structure
     subfolders = ["left", "right"]
-
-    player_folder = os.path.join(anim_gifs_folder, f"player_{player}")
-
+    player_folder = os.path.join(output_folder, f"{type}_anim_gifs", f"player_{player}")
     folder_path = os.path.join(player_folder, color)
     os.makedirs(folder_path, exist_ok=True)
 
@@ -120,17 +116,18 @@ def create_animation(color, player):
                 # Flip head image horizontally for "right" folder
                 head_image = head_image.transpose(Image.FLIP_LEFT_RIGHT)
 
-            if subfolder == "right":
-                # Flip run image horizontally for "right" folder
-                body_image_loaded = body_image_loaded.transpose(Image.FLIP_LEFT_RIGHT)
-
             gif_frames = []  # Clear gif_frames for each head pose
 
             for i, run_frame in enumerate(run_frames):
                 head_pose_name = head_pose_file.replace(".png", "")
                 print(f"\nCreating frame {i+1}/{len(run_frames)} for {color} player {player}'s run animation for {head_pose_name}")
                 run_image = Image.open(run_frame).copy()  # Make a copy of run_image for each frame
-                body_image_loaded = Image.open(body_image)
+                body_image_loaded = Image.open(getattr(sys.modules[__name__], f"{type}_body_image"))
+
+                if subfolder == "right":
+                    # Flip run image horizontally for "right" folder
+                    body_image_loaded = body_image_loaded.transpose(Image.FLIP_LEFT_RIGHT)
+
                 
                 if subfolder == "right":
                     # Flip run image horizontally for "right" folder
@@ -196,7 +193,7 @@ def replace_color(image, old_color, new_color):
     return Image.fromarray(data, mode=image.mode)  # Ensure the returned image has the same mode
 
 # START
-if (len(sys.argv) > 1 and sys.argv[1] == "copy"):
-    print("Deprecated")
+if (len(sys.argv) > 1):
+    create_players(type=f"{sys.argv[1]}")
 else:
-    create_players()
+    create_players(type="sneaker")
