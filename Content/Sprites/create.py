@@ -116,18 +116,19 @@ def create_animations(player, type, selected_debug):
         create_animation(color, player, type, selected_debug)
 
 def create_animation(color, player, type, selected_debug):
-    output_folder = os.path.join(output_folder, {type})
+    output_folder = os.path.join(rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Content\Sprites", type)
     head_folder = os.path.join(output_folder, f"{type}_head_poses")
     run_folder = os.path.join(output_folder, f"{type}_run_animation")
     run_frames = [os.path.join(run_folder, f) for f in os.listdir(run_folder) if f.endswith('.png')]
     run_frames.sort()  # Ensure frames are in order
+
 
     # Define folder structure
     subfolders = selected_dirs
     player_folder = os.path.join(output_folder, f"{type}_anim_gifs", player)
     folder_path = os.path.join(player_folder, color)
     os.makedirs(folder_path, exist_ok=True)
-
+    
     for subfolder in subfolders:
         subfolder_path = os.path.join(folder_path, subfolder)
         os.makedirs(subfolder_path, exist_ok=True)
