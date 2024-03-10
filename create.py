@@ -385,7 +385,7 @@ if program == "1":
     do_gifs_input = input("File type to generate: (gif/png/both): ")
     if do_gifs_input == "gif" or do_gifs_input == "png" or do_gifs_input == "both":
         do_gifs = do_gifs_input
-    if selected_debug == "\n":
+    if selected_debug == "":
         selected_debug == "n"
 
     for type in player_types:
