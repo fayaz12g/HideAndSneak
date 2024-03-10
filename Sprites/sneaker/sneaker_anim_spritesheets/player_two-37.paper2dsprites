@@ -1,0 +1,23 @@
+{"frames": {
+
+"tan/left/tan_left_head_down_blink_run_anim.gif":
+{
+	"frame": {"x":1,"y":1,"w":3513,"h":3938},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":89,"y":130,"w":3513,"h":3938},
+	"sourceSize": {"w":4096,"h":4096},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"target": "paper2d", 
+	"image": "player_two-37.png",
+	"format": "RGBA8888",
+	"size": {"w":3515,"h":3940},
+	"scale": "1",
+	"related_multi_packs": [ "player_two-1.paper2dsprites", "player_two-2.paper2dsprites", "player_two-3.paper2dsprites", "player_two-4.paper2dsprites", "player_two-5.paper2dsprites", "player_two-6.paper2dsprites", "player_two-7.paper2dsprites", "player_two-8.paper2dsprites", "player_two-9.paper2dsprites", "player_two-10.paper2dsprites", "player_two-11.paper2dsprites", "player_two-12.paper2dsprites", "player_two-13.paper2dsprites", "player_two-14.paper2dsprites", "player_two-15.paper2dsprites", "player_two-16.paper2dsprites", "player_two-17.paper2dsprites", "player_two-18.paper2dsprites", "player_two-19.paper2dsprites", "player_two-20.paper2dsprites", "player_two-21.paper2dsprites", "player_two-22.paper2dsprites", "player_two-23.paper2dsprites", "player_two-24.paper2dsprites", "player_two-25.paper2dsprites", "player_two-26.paper2dsprites", "player_two-27.paper2dsprites", "player_two-28.paper2dsprites", "player_two-29.paper2dsprites", "player_two-30.paper2dsprites", "player_two-31.paper2dsprites", "player_two-32.paper2dsprites", "player_two-33.paper2dsprites", "player_two-34.paper2dsprites", "player_two-35.paper2dsprites", "player_two-36.paper2dsprites", "player_two-38.paper2dsprites", "player_two-39.paper2dsprites", "player_two-40.paper2dsprites", "player_two-41.paper2dsprites", "player_two-42.paper2dsprites", "player_two-43.paper2dsprites", "player_two-44.paper2dsprites", "player_two-45.paper2dsprites", "player_two-46.paper2dsprites", "player_two-47.paper2dsprites", "player_two-48.paper2dsprites" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:07679407700439b4e6d43e79830afbc8:6083b87121275deac40558a8e0c9f04e:89864a160f669a40de6ecad89b6b6d70$"
+}
+}

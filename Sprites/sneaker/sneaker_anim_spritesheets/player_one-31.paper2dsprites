@@ -1,0 +1,22 @@
+{"frames": {
+
+"light/right/light_right_head_down_run_anim.gif":
+{
+	"frame": {"x":1,"y":1,"w":3513,"h":3927},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":494,"y":150,"w":3513,"h":3927},
+	"sourceSize": {"w":4096,"h":4096}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"target": "paper2d", 
+	"image": "player_one-31.png",
+	"format": "RGBA8888",
+	"size": {"w":3515,"h":3929},
+	"scale": "1",
+	"related_multi_packs": [ "player_one-0.paper2dsprites", "player_one-1.paper2dsprites", "player_one-2.paper2dsprites", "player_one-3.paper2dsprites", "player_one-4.paper2dsprites", "player_one-5.paper2dsprites", "player_one-6.paper2dsprites", "player_one-7.paper2dsprites", "player_one-8.paper2dsprites", "player_one-9.paper2dsprites", "player_one-10.paper2dsprites", "player_one-11.paper2dsprites", "player_one-12.paper2dsprites", "player_one-13.paper2dsprites", "player_one-14.paper2dsprites", "player_one-15.paper2dsprites", "player_one-16.paper2dsprites", "player_one-17.paper2dsprites", "player_one-18.paper2dsprites", "player_one-19.paper2dsprites", "player_one-20.paper2dsprites", "player_one-21.paper2dsprites", "player_one-22.paper2dsprites", "player_one-23.paper2dsprites", "player_one-24.paper2dsprites", "player_one-25.paper2dsprites", "player_one-26.paper2dsprites", "player_one-27.paper2dsprites", "player_one-28.paper2dsprites", "player_one-29.paper2dsprites", "player_one-30.paper2dsprites", "player_one-32.paper2dsprites", "player_one-33.paper2dsprites", "player_one-34.paper2dsprites", "player_one-35.paper2dsprites", "player_one-36.paper2dsprites", "player_one-37.paper2dsprites", "player_one-38.paper2dsprites", "player_one-39.paper2dsprites", "player_one-40.paper2dsprites", "player_one-41.paper2dsprites", "player_one-42.paper2dsprites", "player_one-43.paper2dsprites", "player_one-44.paper2dsprites", "player_one-45.paper2dsprites", "player_one-46.paper2dsprites", "player_one-47.paper2dsprites" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:6c8df8240eac46b9c3cab4440120fa88:03179a2ebb4b71470ea3d736b58ab700:4ec02e4ffd1548fb46c1125b38b0e256$"
+}
+}
