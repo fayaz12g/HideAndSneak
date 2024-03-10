@@ -178,12 +178,12 @@ def create_animation(color, player, type, selected_debug):
             if selected_debug == "n":
                 print("\n")
 
-            if do_gifs =="1" or do_gifs =="3":
+            if do_gifs =="gif" or do_gifs =="both":
                 output_file = os.path.join(subfolder_path, f"{type}_{player}_{color}_{subfolder}_{head_pose_name}_run_anim.gif").lower()
                 gif_thread = Thread(target = save_frames_as_gif, args = (gif_frames, output_file))
                 gif_thread.start()
 
-            if do_gifs =="2" or do_gifs =="3":
+            if do_gifs =="png" or do_gifs =="both":
                 output_destination = os.path.join(subfolder_path, f"{type}_{player}_{color}_{subfolder}_{head_pose_name}_run_anim").lower()
                 os.makedirs(output_destination, exist_ok=True)
                 pngs_thread = Thread(target = create_individual_png_frames, args = (gif_frames, output_destination))
@@ -387,6 +387,7 @@ if program == "1":
         do_gifs = do_gifs_input
     if selected_debug == "":
         selected_debug == "n"
+        print("Defaulted to Debug Mode Off")
 
     for type in player_types:
         create_players(type, selected_debug)
