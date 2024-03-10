@@ -133,7 +133,10 @@ def create_animation(color, player, type, selected_debug):
 
     # Define folder structure
     subfolders = selected_dirs
-    player_folder = os.path.join(output_folder, f"{type}_anim_gifs", player)
+    if do_gifs:
+        player_folder = os.path.join(output_folder, f"{type}_anim_gifs", player)
+    if not do_gifs:
+        player_folder = os.path.join(output_folder, f"{type}_anim_pngs", player)
     folder_path = os.path.join(player_folder, color)
     os.makedirs(folder_path, exist_ok=True)
     
@@ -181,6 +184,7 @@ def create_animation(color, player, type, selected_debug):
 
             if not do_gifs:
                 output_destination = os.path.join(subfolder_path, f"{type}_{player}_{color}_{subfolder}_{head_pose_name}_run_anim").lower()
+                os.makedirs(output_destination, exist_ok=True)
                 pngs_thread = Thread(target = create_individual_png_frames, args = (gif_frames, output_destination))
                 pngs_thread.start()
 
@@ -311,6 +315,7 @@ def find_gif_files(directory):
 def gif_to_spritesheet():
     username = getpass.getuser()  # Get the current username
     gif_folder_path = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Sprites\sneaker\sneaker_anim_gifs"
+    pngs_folder_path = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Sprites\sneaker\sneaker_anim_pngs"
     output_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Sprites\sneaker\sneaker_anim_flipbooks"
 
     # Create the output folder if it doesn't exist
