@@ -15,7 +15,7 @@ import json
 os.environ['IMAGEIO_MAX_IMAGE_PIXELS'] = '512000000'  # Increase to 512MB
 
 username = getpass.getuser()
-input_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Content\Sprites"
+input_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Sprites"
 github_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak"
 head_folder = os.path.join(input_folder, "head_poses")
 run_folder = os.path.join(input_folder, "run_animation")
@@ -120,7 +120,7 @@ def create_animation(color, player, type, selected_debug):
     global selected_types
     global selected_nums
     global selected_colors 
-    output_folder = os.path.join(rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Content\Sprites", type)
+    output_folder = os.path.join(rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Sprites", type)
     head_folder = os.path.join(output_folder, f"{type}_head_poses")
     run_folder = os.path.join(output_folder, f"{type}_run_animation")
     run_frames = [os.path.join(run_folder, f) for f in os.listdir(run_folder) if f.endswith('.png')]
@@ -265,7 +265,7 @@ def input_parameter(param, example, selected_list, all):
 
 def generate_links_json():
     links = {}
-    github_base_url = "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/"
+    github_base_url = "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Sprites/"
     for skin_color, skin_data in skin_colors.items():
         links[skin_color] = {"left": {}, "right": {}}
         for player_type in player_types:
