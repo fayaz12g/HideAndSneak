@@ -97,7 +97,7 @@ selected_nums = None
 selected_colors = None
 selected_dirs = None
 selected_debug = "y"
-do_gifs = "1"
+do_gifs = "both"
 
 def create_players(type, selected_debug):
     timestart = time.time()
@@ -359,11 +359,9 @@ print("-------------------------------------------------------------------------
 print("|                                 HIDE AND SNEAK                                  |")
 print("|                                                                                 |")
 print("|              Choose a program from the following menu options:                  |")
-print("|                          1) GIF Animation Creator                               |")
+print("|                            1) Animation Creator                                 |")
 print("|                            2) JSON Link Creator                                 |")
 print("|                             3) GIF to Flipbook                                  |")
-print("|                          4) PNG Animation Creator                               |")
-print("|                         5) FULL Animation Creator                               |")
 print("|---------------------------------------------------------------------------------|")
 print()
 
@@ -384,7 +382,9 @@ if program == "1":
     selected_colors = input_parameter("color", "tan", selected_colors, list(skin_colors.keys()))
     selected_dirs = input_parameter("direction", "left", selected_dirs, player_directions)
     selected_debug = input("Show Debug: (y/n): ")
-    do_gifs = '1'
+    do_gifs_input = input("File type to generate: (gif/png/both): ")
+    if do_gifs_input == "gif" or do_gifs_input == "png" or do_gifs_input == "both":
+        do_gifs = do_gifs_input
     if selected_debug == "\n":
         selected_debug == "n"
 
@@ -397,49 +397,3 @@ if program == "2":
 
 if program == "3":
     gif_to_spritesheet()
-
-
-if program == "4":
-    print("-----------------------------------------------------------------------------------")
-    print("|                      HIDE AND SNEAK: PNG ANIMATION CREATOR                      |")
-    print("|                                                                                 |")
-    print("| For each of the following, enter a space-separated list of options to generate. |")
-    print("|                    e.g. 'player_one player_three player_six'                    |")
-    print("|                      (Or leave blank to generate all)                           |")
-    print("|---------------------------------------------------------------------------------|")
-    print()
-
-    selected_types = input_parameter("type", "sneaker", selected_types, player_types)
-    selected_nums = input_parameter("number", "player_one", selected_nums, list(player_colors.keys()))
-    selected_colors = input_parameter("color", "tan", selected_colors, list(skin_colors.keys()))
-    selected_dirs = input_parameter("direction", "left", selected_dirs, player_directions)
-    selected_debug = input("Show Debug: (y/n): ")
-    if selected_debug == "\n":
-        selected_debug == "n"
-    do_gifs = "2"
-
-    for type in player_types:
-        create_players(type, selected_debug)
-
-
-if program == "5":
-    print("-----------------------------------------------------------------------------------")
-    print("|                     HIDE AND SNEAK: FULL ANIMATION CREATOR                      |")
-    print("|                                                                                 |")
-    print("| For each of the following, enter a space-separated list of options to generate. |")
-    print("|                    e.g. 'player_one player_three player_six'                    |")
-    print("|                      (Or leave blank to generate all)                           |")
-    print("|---------------------------------------------------------------------------------|")
-    print()
-
-    selected_types = input_parameter("type", "sneaker", selected_types, player_types)
-    selected_nums = input_parameter("number", "player_one", selected_nums, list(player_colors.keys()))
-    selected_colors = input_parameter("color", "tan", selected_colors, list(skin_colors.keys()))
-    selected_dirs = input_parameter("direction", "left", selected_dirs, player_directions)
-    selected_debug = input("Show Debug: (y/n): ")
-    if selected_debug == "\n":
-        selected_debug == "n"
-    do_gifs = "3"
-
-    for type in player_types:
-        create_players(type, selected_debug)
