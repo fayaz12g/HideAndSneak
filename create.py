@@ -97,6 +97,7 @@ selected_nums = None
 selected_colors = None
 selected_dirs = None
 selected_debug = "y"
+do_gifs = True
 
 def create_players(type, selected_debug):
     timestart = time.time()
@@ -118,6 +119,7 @@ def create_animations(player, type, selected_debug):
         create_animation(color, player, type, selected_debug)
 
 def create_animation(color, player, type, selected_debug):
+    global do_gifs
     global selected_dirs
     global selected_types
     global selected_nums
@@ -172,9 +174,15 @@ def create_animation(color, player, type, selected_debug):
             if selected_debug == "n":
                 print("\n")
 
-            output_file = os.path.join(subfolder_path, f"{color}_{subfolder}_{head_pose_name}_run_anim.gif").lower()
-            gif_thread = Thread(target = save_frames_as_gif, args = (gif_frames, output_file))
-            gif_thread.start()
+            if do_gifs:
+                output_file = os.path.join(subfolder_path, f"{type}_{player}_{color}_{subfolder}_{head_pose_name}_run_anim.gif").lower()
+                gif_thread = Thread(target = save_frames_as_gif, args = (gif_frames, output_file))
+                gif_thread.start()
+
+            if not do_gifs:
+                output_destination = os.path.join(subfolder_path, f"{type}_{player}_{color}_{subfolder}_{head_pose_name}_run_anim").lower()
+                pngs_thread = Thread(target = create_individual_png_frames, args = (gif_frames, output_destination))
+                pngs_thread.start()
 
 def create_anim_frame(output_folder, player, color, type, subfolder, run_frame, frame_num, num_frames, head_image, head_pose_name, gif_frames, selected_debug):
     output_string = f"\nCreated {subfolder} frame {frame_num+1}/{num_frames} of {color} {player}'s run animation for {head_pose_name}\n"
@@ -280,7 +288,7 @@ def generate_links_json():
                                            "head_up_run_anim", "head_up_blink_run_anim"]:
                         gif_name = f"{skin_color}_{direction}_{head_direction}.gif"
                         saveasname = f"{player_type}_{player_name}_{gif_name}"
-                        github_url = f"{github_base_url}{player_type}/{player_folder}{player_name}/{skin_color}/{direction}/{gif_name}"
+                        github_url = f"{github_base_url}{player_type}/{player_folder}{player_name}/{skin_color}/{direction}/{saveasname}"
                         player_links[saveasname] = github_url
                 links[skin_color]["left"].update(player_links)
                 links[skin_color]["right"].update(player_links)
@@ -345,9 +353,10 @@ print("-------------------------------------------------------------------------
 print("|                                 HIDE AND SNEAK                                  |")
 print("|                                                                                 |")
 print("|              Choose a program from the following menu options:                  |")
-print("|                            1) Animation Creator                                 |")
+print("|                          1) GIF Animation Creator                               |")
 print("|                            2) JSON Link Creator                                 |")
 print("|                             3) GIF to Flipbook                                  |")
+print("|                          4) PNG Animation Creator                               |")
 print("|---------------------------------------------------------------------------------|")
 print()
 
@@ -355,7 +364,7 @@ program = input()
 
 if program == "1":
     print("-----------------------------------------------------------------------------------")
-    print("|                        HIDE AND SNEAK: ANIMATION CREATOR                        |")
+    print("|                      HIDE AND SNEAK: GIF ANIMATION CREATOR                      |")
     print("|                                                                                 |")
     print("| For each of the following, enter a space-separated list of options to generate. |")
     print("|                    e.g. 'player_one player_three player_six'                    |")
@@ -380,3 +389,26 @@ if program == "2":
 
 if program == "3":
     gif_to_spritesheet()
+
+
+if program == "4":
+    print("-----------------------------------------------------------------------------------")
+    print("|                      HIDE AND SNEAK: PNG ANIMATION CREATOR                      |")
+    print("|                                                                                 |")
+    print("| For each of the following, enter a space-separated list of options to generate. |")
+    print("|                    e.g. 'player_one player_three player_six'                    |")
+    print("|                      (Or leave blank to generate all)                           |")
+    print("|---------------------------------------------------------------------------------|")
+    print()
+
+    selected_types = input_parameter("type", "sneaker", selected_types, player_types)
+    selected_nums = input_parameter("number", "player_one", selected_nums, list(player_colors.keys()))
+    selected_colors = input_parameter("color", "tan", selected_colors, list(skin_colors.keys()))
+    selected_dirs = input_parameter("direction", "left", selected_dirs, player_directions)
+    selected_debug = input("Show Debug: (y/n): ")
+    if selected_debug == "\n":
+        selected_debug == "n"
+    do_gifs = False
+
+    for type in player_types:
+        create_players(type, selected_debug)
