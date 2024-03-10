@@ -116,6 +116,10 @@ def create_animations(player, type, selected_debug):
         create_animation(color, player, type, selected_debug)
 
 def create_animation(color, player, type, selected_debug):
+    global selected_dirs
+    global selected_types
+    global selected_nums
+    global selected_colors 
     output_folder = os.path.join(rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Content\Sprites", type)
     head_folder = os.path.join(output_folder, f"{type}_head_poses")
     run_folder = os.path.join(output_folder, f"{type}_run_animation")
@@ -156,7 +160,7 @@ def create_animation(color, player, type, selected_debug):
             for i, run_frame in enumerate(run_frames):
                 head_pose_name = head_pose_file.replace(".png", "")
                 
-                frame_thread = Thread(target = create_anim_frame, args = (player, color, type, subfolder, run_frame, i, len(run_frames), head_image, head_pose_name, gif_frames, selected_debug))
+                frame_thread = Thread(target = create_anim_frame, args = (output_folder, player, color, type, subfolder, run_frame, i, len(run_frames), head_image, head_pose_name, gif_frames, selected_debug))
                 frame_workers.append(frame_thread)
                 frame_thread.start()
             
@@ -170,10 +174,10 @@ def create_animation(color, player, type, selected_debug):
             gif_thread = Thread(target = save_frames_as_gif, args = (gif_frames, output_file))
             gif_thread.start()
 
-def create_anim_frame(player, color, type, subfolder, run_frame, frame_num, num_frames, head_image, head_pose_name, gif_frames, selected_debug):
+def create_anim_frame(output_folder, player, color, type, subfolder, run_frame, frame_num, num_frames, head_image, head_pose_name, gif_frames, selected_debug):
     output_string = f"\nCreated {subfolder} frame {frame_num+1}/{num_frames} of {color} {player}'s run animation for {head_pose_name}\n"
     run_image = Image.open(run_frame).copy()  # Make a copy of run_image for each frame
-    body_image_loaded = Image.open(getattr(os.path.join(output_folder, f"{type}_body.png")))
+    body_image_loaded = Image.open(os.path.join(output_folder, f"{type}_body.png"))
 
     if subfolder == "right":
         # Flip run image horizontally for "right" folder
