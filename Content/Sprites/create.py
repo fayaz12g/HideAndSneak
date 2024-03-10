@@ -268,8 +268,8 @@ def generate_links_json():
                                            "head_idle_run_anim", "head_idle_blink_run_anim",
                                            "head_up_run_anim", "head_up_blink_run_anim"]:
                         gif_name = f"{skin_color}_{direction}_{head_direction}.gif"
-                        saveasname = f"{player_name}_{gif_name}"
-                        github_url = f"{github_base_url}{player_folder}{player_name}/{skin_color}/{direction}/{gif_name}"
+                        saveasname = f"{player_type}_{player_name}_{gif_name}"
+                        github_url = f"{github_base_url}{player_type}{player_folder}{player_name}/{skin_color}/{direction}/{gif_name}"
                         player_links[saveasname] = github_url
                 links[skin_color]["left"].update(player_links)
                 links[skin_color]["right"].update(player_links)
