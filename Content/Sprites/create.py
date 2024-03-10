@@ -10,11 +10,13 @@ import sys
 from threading import Thread
 import concurrent.futures
 import time
+import json
 
 os.environ['IMAGEIO_MAX_IMAGE_PIXELS'] = '512000000'  # Increase to 512MB
 
 username = getpass.getuser()
 input_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Content\Sprites"
+github_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak"
 head_folder = os.path.join(input_folder, "head_poses")
 run_folder = os.path.join(input_folder, "run_animation")
 output_folder = input_folder
@@ -252,23 +254,66 @@ def input_parameter(param, example, selected_list, all):
                 break
         if (not found_error): return input_list
 
+def generate_links_json():
+    links = {}
+    github_base_url = "https://raw.githubusercontent.com/fayaz12g/HideAndSneak/main/Content/Sprites/"
+    for skin_color, skin_data in skin_colors.items():
+        links[skin_color] = {"left": {}, "right": {}}
+        for player_type in player_types:
+            player_folder = f"{player_type}_anim_gifs/"
+            for player_name, player_color in player_colors.items():
+                player_links = {}
+                for direction in player_directions:
+                    for head_direction in ["head_down_blink_run_anim", "head_down_run_anim",
+                                           "head_idle_run_anim", "head_idle_blink_run_anim",
+                                           "head_up_run_anim", "head_up_blink_run_anim"]:
+                        gif_name = f"{skin_color}_{direction}_{head_direction}.gif"
+                        saveasname = f"{player_name}_{gif_name}"
+                        github_url = f"{github_base_url}{player_folder}{player_name}/{skin_color}/{direction}/{gif_name}"
+                        player_links[saveasname] = github_url
+                links[skin_color]["left"].update(player_links)
+                links[skin_color]["right"].update(player_links)
+
+    json_path = os.path.join(github_folder, "links.json")
+    with open(json_path, 'w') as json_file:
+        json.dump(links, json_file, indent=2)
+
+    print("Done!")
+
+
 # START
+        
 print("-----------------------------------------------------------------------------------")
-print("|                        HIDE AND SNEAK: ANIMATION CREATOR                        |")
+print("|                                 HIDE AND SNEAK                                  |")
 print("|                                                                                 |")
-print("| For each of the following, enter a space-separated list of options to generate. |")
-print("|                    e.g. 'player_one player_three player_six'                    |")
-print("|                      (Or leave blank to generate all)                           |")
+print("|              Choose a program from the following menu options:                  |")
+print("|                            1) Animation Creator                                 |")
+print("|                            2) JSON Link Creator                                 |")
 print("|---------------------------------------------------------------------------------|")
 print()
 
-selected_types = input_parameter("type", "sneaker", selected_types, player_types)
-selected_nums = input_parameter("number", "player_one", selected_nums, list(player_colors.keys()))
-selected_colors = input_parameter("color", "tan", selected_colors, list(skin_colors.keys()))
-selected_dirs = input_parameter("direction", "left", selected_dirs, player_directions)
-selected_debug = input("Show Debug: (y/n): ")
-if selected_debug == "\n":
-    selected_debug == "n"
+program = input()
 
-for type in player_types:
-    create_players(type, selected_debug)
+if program == "1":
+    print("-----------------------------------------------------------------------------------")
+    print("|                        HIDE AND SNEAK: ANIMATION CREATOR                        |")
+    print("|                                                                                 |")
+    print("| For each of the following, enter a space-separated list of options to generate. |")
+    print("|                    e.g. 'player_one player_three player_six'                    |")
+    print("|                      (Or leave blank to generate all)                           |")
+    print("|---------------------------------------------------------------------------------|")
+    print()
+
+    selected_types = input_parameter("type", "sneaker", selected_types, player_types)
+    selected_nums = input_parameter("number", "player_one", selected_nums, list(player_colors.keys()))
+    selected_colors = input_parameter("color", "tan", selected_colors, list(skin_colors.keys()))
+    selected_dirs = input_parameter("direction", "left", selected_dirs, player_directions)
+    selected_debug = input("Show Debug: (y/n): ")
+    if selected_debug == "\n":
+        selected_debug == "n"
+
+    for type in player_types:
+        create_players(type, selected_debug)
+
+if program == "2":
+    generate_links_json()
