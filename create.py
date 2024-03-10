@@ -11,6 +11,7 @@ from threading import Thread
 import concurrent.futures
 import time
 import json
+import subprocess
 import unreal
 
 os.environ['IMAGEIO_MAX_IMAGE_PIXELS'] = '512000000'  # Increase to 512MB
@@ -298,42 +299,45 @@ def find_gif_files(directory):
             if file.endswith(".gif"):
                 gif_files.append(os.path.join(root, file))
     return gif_files
+    
+def gif_to_spritesheet():
+    username = getpass.getuser()  # Get the current username
+    gif_folder_path = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Sprites\sneaker\sneaker_anim_gifs"
+    output_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Sprites\sneaker\sneaker_anim_flipbooks"
 
-def gif_to_flipbook():
-    # Get the Editor Utility Library
-    editor_utility = unreal.EditorUtilityLibrary()
+    # Create the output folder if it doesn't exist
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
 
-    # Input folder containing GIFs (nested recursively)
-    input_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Sprites\sneaker\sneaker_anim_gifs"
+    for root, _, files in os.walk(gif_folder_path):
+        for gif_file in files:
+            if gif_file.lower().endswith(".gif"):
+                gif_path = os.path.join(root, gif_file)
+                gif_name = os.path.splitext(gif_file)[0]
+                output_path = os.path.join(output_folder, f"{gif_name}.png")  # Use PNG format
 
-    # Get a list of all GIF files in the directory (recursively)
-    gif_files = find_gif_files(input_folder)
+                # Run TexturePacker from command line
+                cmd = [
+                    "C:\\Program Files\\CodeAndWeb\\TexturePacker\\bin\\TexturePackerGUI.exe",
+                    gif_path,
+                    "--sheet",
+                    output_path,
+                    "--data",
+                    f"{output_path}.json",  # Optional: Generate JSON data file
+                    "--format",
+                    "png",
+                    "--algorithm",
+                    "Basic",
+                    "--trim-mode",
+                    "None",  # Adjust trim mode as needed
+                ]
 
-    # Iterate over each GIF file
-    for gif_file in gif_files:
-        # Load the GIF texture
-        gif_texture = unreal.EditorAssetLibrary.load_asset(gif_file)
+                try:
+                    subprocess.run(cmd, check=True)
+                    print(f"Converted {gif_file} to sprite sheet: {output_path}")
+                except subprocess.CalledProcessError:
+                    print(f"Error converting {gif_file} to sprite sheet.")
 
-        # Get the directory and filename of the GIF
-        gif_dir, gif_name = os.path.split(gif_file)
-        
-        # Create Flipbook asset with the same name as the GIF
-        flipbook_name = os.path.splitext(gif_name)[0]
-        flipbook_path = os.path.join(gif_dir, flipbook_name)
-        flipbook = unreal.AssetToolsHelpers.get_asset_tools().create_asset(
-            flipbook_name, gif_dir, unreal.Flipbook, unreal.FlipbookFactoryNew())
-
-        # Set the sprite texture for the flipbook
-        unreal.SpritesheetHelperLibrary.set_sprites_from_textures(
-            flipbook, [gif_texture])
-
-        # Save the flipbook
-        unreal.EditorAssetLibrary.save_loaded_asset(flipbook)
-
-        # Print confirmation
-        print("Converted GIF to Flipbook:", gif_file)
-
-    print("Conversion complete.")
 
 # START
         
@@ -375,4 +379,4 @@ if program == "2":
 
 
 if program == "3":
-    gif_to_flipbook()
+    gif_to_spritesheet()
