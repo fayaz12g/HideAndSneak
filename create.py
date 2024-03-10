@@ -11,6 +11,7 @@ from threading import Thread
 import concurrent.futures
 import time
 import json
+import unreal
 
 os.environ['IMAGEIO_MAX_IMAGE_PIXELS'] = '512000000'  # Increase to 512MB
 
@@ -289,6 +290,50 @@ def generate_links_json():
 
     print("Done!")
 
+# Function to recursively search for GIF files
+def find_gif_files(directory):
+    gif_files = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith(".gif"):
+                gif_files.append(os.path.join(root, file))
+    return gif_files
+
+def gif_to_flipbook():
+    # Get the Editor Utility Library
+    editor_utility = unreal.EditorUtilityLibrary()
+
+    # Input folder containing GIFs (nested recursively)
+    input_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak\Sprites\sneaker\sneaker_anim_gifs"
+
+    # Get a list of all GIF files in the directory (recursively)
+    gif_files = find_gif_files(input_folder)
+
+    # Iterate over each GIF file
+    for gif_file in gif_files:
+        # Load the GIF texture
+        gif_texture = unreal.EditorAssetLibrary.load_asset(gif_file)
+
+        # Get the directory and filename of the GIF
+        gif_dir, gif_name = os.path.split(gif_file)
+        
+        # Create Flipbook asset with the same name as the GIF
+        flipbook_name = os.path.splitext(gif_name)[0]
+        flipbook_path = os.path.join(gif_dir, flipbook_name)
+        flipbook = unreal.AssetToolsHelpers.get_asset_tools().create_asset(
+            flipbook_name, gif_dir, unreal.Flipbook, unreal.FlipbookFactoryNew())
+
+        # Set the sprite texture for the flipbook
+        unreal.SpritesheetHelperLibrary.set_sprites_from_textures(
+            flipbook, [gif_texture])
+
+        # Save the flipbook
+        unreal.EditorAssetLibrary.save_loaded_asset(flipbook)
+
+        # Print confirmation
+        print("Converted GIF to Flipbook:", gif_file)
+
+    print("Conversion complete.")
 
 # START
         
@@ -298,6 +343,7 @@ print("|                                                                        
 print("|              Choose a program from the following menu options:                  |")
 print("|                            1) Animation Creator                                 |")
 print("|                            2) JSON Link Creator                                 |")
+print("|                             3) GIF to Flipbook                                  |")
 print("|---------------------------------------------------------------------------------|")
 print()
 
@@ -326,3 +372,7 @@ if program == "1":
 
 if program == "2":
     generate_links_json()
+
+
+if program == "3":
+    gif_to_flipbook()
