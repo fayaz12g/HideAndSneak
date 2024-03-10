@@ -97,7 +97,7 @@ selected_nums = None
 selected_colors = None
 selected_dirs = None
 selected_debug = "y"
-do_gifs = True
+do_gifs = "1"
 
 def create_players(type, selected_debug):
     timestart = time.time()
@@ -158,6 +158,7 @@ def create_animation(color, player, type, selected_debug):
             if subfolder == "right":
                 # Flip head image horizontally for "right" folder
                 head_image = head_image.transpose(Image.FLIP_LEFT_RIGHT)
+                run_frames.sort(reverse=True)
             
             print(f"Generating animation for {color} {player}'s {subfolder} {head_pose_name}")
 
@@ -177,12 +178,12 @@ def create_animation(color, player, type, selected_debug):
             if selected_debug == "n":
                 print("\n")
 
-            if do_gifs:
+            if do_gifs =="1" or do_gifs =="3":
                 output_file = os.path.join(subfolder_path, f"{type}_{player}_{color}_{subfolder}_{head_pose_name}_run_anim.gif").lower()
                 gif_thread = Thread(target = save_frames_as_gif, args = (gif_frames, output_file))
                 gif_thread.start()
 
-            if not do_gifs:
+            if do_gifs =="2" or do_gifs =="3":
                 output_destination = os.path.join(subfolder_path, f"{type}_{player}_{color}_{subfolder}_{head_pose_name}_run_anim").lower()
                 os.makedirs(output_destination, exist_ok=True)
                 pngs_thread = Thread(target = create_individual_png_frames, args = (gif_frames, output_destination))
@@ -362,6 +363,7 @@ print("|                          1) GIF Animation Creator                      
 print("|                            2) JSON Link Creator                                 |")
 print("|                             3) GIF to Flipbook                                  |")
 print("|                          4) PNG Animation Creator                               |")
+print("|                         5) FULL Animation Creator                               |")
 print("|---------------------------------------------------------------------------------|")
 print()
 
@@ -382,6 +384,7 @@ if program == "1":
     selected_colors = input_parameter("color", "tan", selected_colors, list(skin_colors.keys()))
     selected_dirs = input_parameter("direction", "left", selected_dirs, player_directions)
     selected_debug = input("Show Debug: (y/n): ")
+    do_gifs = '1'
     if selected_debug == "\n":
         selected_debug == "n"
 
@@ -413,7 +416,30 @@ if program == "4":
     selected_debug = input("Show Debug: (y/n): ")
     if selected_debug == "\n":
         selected_debug == "n"
-    do_gifs = False
+    do_gifs = "2"
+
+    for type in player_types:
+        create_players(type, selected_debug)
+
+
+if program == "5":
+    print("-----------------------------------------------------------------------------------")
+    print("|                     HIDE AND SNEAK: FULL ANIMATION CREATOR                      |")
+    print("|                                                                                 |")
+    print("| For each of the following, enter a space-separated list of options to generate. |")
+    print("|                    e.g. 'player_one player_three player_six'                    |")
+    print("|                      (Or leave blank to generate all)                           |")
+    print("|---------------------------------------------------------------------------------|")
+    print()
+
+    selected_types = input_parameter("type", "sneaker", selected_types, player_types)
+    selected_nums = input_parameter("number", "player_one", selected_nums, list(player_colors.keys()))
+    selected_colors = input_parameter("color", "tan", selected_colors, list(skin_colors.keys()))
+    selected_dirs = input_parameter("direction", "left", selected_dirs, player_directions)
+    selected_debug = input("Show Debug: (y/n): ")
+    if selected_debug == "\n":
+        selected_debug == "n"
+    do_gifs = "3"
 
     for type in player_types:
         create_players(type, selected_debug)
