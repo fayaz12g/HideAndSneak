@@ -20,6 +20,7 @@ github_folder = rf"C:\Users\{username}\Documents\GitHub\HideAndSneak"
 head_folder = os.path.join(input_folder, "head_poses")
 run_folder = os.path.join(input_folder, "run_animation")
 output_folder = input_folder
+
 sneaker_body_image = os.path.join(output_folder, "sneaker_body.png")
 seeker_body_image = os.path.join(output_folder, "seeker_body.png")
 
@@ -115,6 +116,9 @@ def create_animations(player, type, selected_debug):
         create_animation(color, player, type, selected_debug)
 
 def create_animation(color, player, type, selected_debug):
+    output_folder = os.path.join(output_folder, {type})
+    head_folder = os.path.join(output_folder, f"{type}_head_poses")
+    run_folder = os.path.join(output_folder, f"{type}_run_animation")
     run_frames = [os.path.join(run_folder, f) for f in os.listdir(run_folder) if f.endswith('.png')]
     run_frames.sort()  # Ensure frames are in order
 
@@ -168,7 +172,7 @@ def create_animation(color, player, type, selected_debug):
 def create_anim_frame(player, color, type, subfolder, run_frame, frame_num, num_frames, head_image, head_pose_name, gif_frames, selected_debug):
     output_string = f"\nCreated {subfolder} frame {frame_num+1}/{num_frames} of {color} {player}'s run animation for {head_pose_name}\n"
     run_image = Image.open(run_frame).copy()  # Make a copy of run_image for each frame
-    body_image_loaded = Image.open(getattr(sys.modules[__name__], f"{type}_body_image"))
+    body_image_loaded = Image.open(getattr(os.path.join(output_folder, f"{type}_body.png")))
 
     if subfolder == "right":
         # Flip run image horizontally for "right" folder
